@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa7fdbe_22b6533e",
+        "filename": "rubygem-oj.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 80
+      },
+      "writtenOn": "2017-06-14T12:45:45Z",
+      "side": 1,
+      "message": "for initial import, you should be increasing release",
+      "revId": "10f2758ebcc36796952260fb8c32d5e197885863",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa7fdbe_a2f883e6",
+        "filename": "rubygem-oj.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 80
+      },
+      "writtenOn": "2017-06-14T12:45:45Z",
+      "side": 1,
+      "message": "this actually seems to cause an issue, the provide misses in the built package.",
+      "revId": "10f2758ebcc36796952260fb8c32d5e197885863",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
