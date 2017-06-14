@@ -1,0 +1,25 @@
+From 824639ff47714799d553e4faecc4ed6baab55fad Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Martin=20M=C3=A1gr?= <mmagr@redhat.com>
+Date: Tue, 3 May 2016 14:08:23 +0200
+Subject: [PATCH] Fix minitest compatibility
+
+---
+ test/helper.rb       | 2 +-
+ test/test_various.rb | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/helper.rb b/test/helper.rb
+index 9192abe..36a1d9f 100644
+--- a/test/helper.rb
++++ b/test/helper.rb
+@@ -9,7 +9,7 @@ $VERBOSE = true
+ end
+
+ require 'rubygems' if RUBY_VERSION.start_with?('1.8.')
+-require 'minitest'
++require 'minitest/unit'
+ require 'minitest/autorun'
+ require 'stringio'
+ require 'date'
+--
+2.4.11
