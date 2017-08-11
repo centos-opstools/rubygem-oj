@@ -1,28 +1,30 @@
 # Generated from oj-2.14.6.gem by gem2rpm -*- rpm-spec -*-
 %global gem_name oj
 
+# explicitly override gem macros to avoid problems with different
+# version and upstream_version
+%if 0%{?dlrn} > 0
+%global gem_instdir %{gem_dir}/gems/%{gem_name}-%{upstream_version}
+%global gem_cache   %{gem_dir}/cache/%{gem_name}-%{upstream_version}.gem
+%global gem_spec    %{gem_dir}/specifications/%{gem_name}-%{upstream_version}.gemspec
+%global gem_docdir  %{gem_dir}/doc/%{gem_name}-%{upstream_version}
+%endif
+
 Name:           rubygem-%{gem_name}
-Version:        2.14.6
-Release:        4%{?dist}
+Version:        XXX
+Release:        1%{?dist}
 Summary:        A fast JSON parser and serializer
 Group:          Development/Languages
 License:        MIT
 URL:            http://www.ohler.com/oj
 Source0:        https://rubygems.org/gems/%{gem_name}-%{version}.gem
-Patch0:         0001-Fix-minitest-compatibility.patch
 
 BuildRequires:  ruby(release)
 BuildRequires:  rubygems-devel
 BuildRequires:  ruby-devel
 BuildRequires:  rubygem(minitest)
-# BuildRequires: rubygem(rake-compiler) => 0.9
-# BuildRequires: rubygem(rake-compiler) < 1
-# BuildRequires: rubygem(minitest) => 5
-# BuildRequires: rubygem(minitest) < 6
-# BuildRequires: rubygem(rails) => 4
-# BuildRequires: rubygem(rails) < 5
 
-Provides: rubygem(%{gem_name}) = %{version}
+Provides:       rubygem(%{gem_name}) = %{version}
 
 %description
 The fastest JSON parser and object serializer. .
@@ -37,11 +39,17 @@ BuildArch:      noarch
 %description doc
 Documentation for %{name}.
 
+
 %prep
 gem unpack %{SOURCE0}
-%setup -q -D -T -n %{gem_name}-%{version}
+%if 0%{?dlrn} > 0
+%setup -q -D -T -n  %{dlrn_nvr}
+%else
+%setup -q -D -T -n  %{gem_name}-%{version}
+%endif
 gem spec %{SOURCE0} -l --ruby > %{gem_name}.gemspec
-%patch0 -p1
+sed -i "s#require 'minitest'#require 'minitest/unit'#" test/helper.rb
+
 
 %build
 # Create the gem as gem install only works on a gem file
@@ -87,19 +95,9 @@ popd
 
 %files doc
 %doc %{gem_docdir}
+%doc %{gem_instdir}/pages/
 %doc %{gem_instdir}/README.md
 %{gem_instdir}/test
 
+
 %changelog
-* Wed Jun 14 2017 Matthias Runge <mrunge@redhat.com> - 2.14.6-4
-- import from https://github.com/opstools-packages/rubygem-oj
-- fix provides
-
-* Mon May 09 2016 Martin Mágr <mmagr@redhat.com> - 2.14.6-3
-- Explicitly list provides for RHEL
-
-* Mon May 09 2016 Martin Mágr <mmagr@redhat.com> - 2.14.6-2
-- Distribute lib files
-
-* Tue May 03 2016 Martin Mágr <mmagr@redhat.com> - 2.14.6-1
-- Initial package
