@@ -2,7 +2,7 @@
 %global gem_name oj
 
 Name:           rubygem-%{gem_name}
-Version:        2.14.6
+Version:        2.18.1
 Release:        4%{?dist}
 Summary:        A fast JSON parser and serializer
 Group:          Development/Languages
@@ -91,6 +91,9 @@ popd
 %{gem_instdir}/test
 
 %changelog
+* Fri Oct 13 2017  Martin Mágr <mmagr@redhat.com> - 2.18.1-1
+- Updated to upstream version 2.18.1
+
 * Wed Jun 14 2017 Matthias Runge <mrunge@redhat.com> - 2.14.6-4
 - import from https://github.com/opstools-packages/rubygem-oj
 - fix provides
