@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81d914_1efc4f3e",
+        "filename": "rubygem-oj.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 80
+      },
+      "writtenOn": "2017-10-13T15:23:49Z",
+      "side": 1,
+      "message": "please set the release to 1 (as in changelog)",
+      "revId": "1e506eff6d53cb00e2e6ba6f4b877be223d16550",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
