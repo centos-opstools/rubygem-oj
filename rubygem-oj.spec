@@ -3,7 +3,7 @@
 
 Name:           rubygem-%{gem_name}
 Version:        2.18.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A fast JSON parser and serializer
 Group:          Development/Languages
 License:        MIT
@@ -15,12 +15,8 @@ BuildRequires:  ruby(release)
 BuildRequires:  rubygems-devel
 BuildRequires:  ruby-devel
 BuildRequires:  rubygem(minitest)
-# BuildRequires: rubygem(rake-compiler) => 0.9
-# BuildRequires: rubygem(rake-compiler) < 1
-# BuildRequires: rubygem(minitest) => 5
-# BuildRequires: rubygem(minitest) < 6
-# BuildRequires: rubygem(rails) => 4
-# BuildRequires: rubygem(rails) < 5
+
+Requires:       rubygems
 
 Provides: rubygem(%{gem_name}) = %{version}
 
@@ -42,6 +38,9 @@ gem unpack %{SOURCE0}
 %setup -q -D -T -n %{gem_name}-%{version}
 gem spec %{SOURCE0} -l --ruby > %{gem_name}.gemspec
 %patch0 -p1
+
+# Change ruby interpreter according to packaging guidelines
+find . -name \*.rb -type f -print | xargs sed -i 's%#!/usr/bin/env ruby%#!/usr/bin/ruby-mri%'
 
 %build
 # Create the gem as gem install only works on a gem file
@@ -91,6 +90,9 @@ popd
 %{gem_instdir}/test
 
 %changelog
+* Tue Oct 24 2017  Martin Mágr <mmagr@redhat.com> - 2.18.1-2
+- Fixed SPEC file according to RDO package review (rhbz#1505533)
+
 * Fri Oct 13 2017  Martin Mágr <mmagr@redhat.com> - 2.18.1-1
 - Updated to upstream version 2.18.1
 
