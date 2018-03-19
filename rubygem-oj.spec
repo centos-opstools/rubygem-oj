@@ -3,7 +3,7 @@
 
 Name:           rubygem-%{gem_name}
 Version:        2.18.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A fast JSON parser and serializer
 Group:          Development/Languages
 License:        MIT
@@ -90,6 +90,9 @@ popd
 %{gem_instdir}/test
 
 %changelog
+* Mon Mar 19 2018 Matthias Runge <mrunge@redhat.com> - 2.18.1-2
+- Bump NVR to build on multiple arches
+
 * Tue Oct 24 2017  Martin Mágr <mmagr@redhat.com> - 2.18.1-2
 - Fixed SPEC file according to RDO package review (rhbz#1505533)
 
