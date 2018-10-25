@@ -90,6 +90,9 @@ popd
 %{gem_instdir}/test
 
 %changelog
+* Tue Oct 25 2018 Michael Turek <mjturek@linux.vnet.ibm.com> - 2.18.1-3
+- Bump version to trigger rebuild for multiple arches
+
 * Mon Mar 19 2018 Matthias Runge <mrunge@redhat.com> - 2.18.1-2
 - Bump NVR to build on multiple arches
 
